@@ -1,0 +1,50 @@
+<header class="clearfix" ng-controller="NavigationController as nav">
+    <nav class="btn-trs navbar">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li ng-controller="ProfileController as profile"
+                    ng-click="profile.exitProfile()">
+                    <a href="" class="btn-nav navbar-brand">Cerebro</a></li>
+
+                <li ng-if="currentUser != undefined && gamePhase != 'SINGLE' && gamePhase != 'MULTI'"
+                    ng-controller="ProfileController as profile"
+                    ng-click="profile.enterProfile()">
+                    <a href="" class="btn-nav">My profile</a></li>
+
+                <li ng-if="currentUser != undefined && gamePhase != 'SINGLE' && gamePhase != 'MULTI'"
+                    ng-controller="RankingsController as rank"
+                    ng-click="rank.enterRankings()">
+                    <a href="" class="btn-nav">Leaderboard</a>
+                </li>
+
+                <li ng-if="currentUser != undefined && gamePhase != 'SINGLE' && !currentUser.pulete && gamePhase != 'MULTI'"
+                    ng-controller="AdminController as admin"
+                    ng-click="admin.enterAdmin()">
+                    <a href="" class="btn-nav">Admin</a>
+                </li>
+
+                <li ng-if="currentUser != undefined && gamePhase != 'SINGLE' && gamePhase != 'MULTI'"
+                    ng-controller="AboutController as about"
+                    ng-click="about.enterAbout()">
+                    <a href="" class="btn-nav">About</a>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="currentUser != undefined">
+                    <div>
+                        <div><b>User:</b> {{currentUser.name}}</div>
+                        <div><b>Rating:</b> {{currentUser.rating}} </div>
+                    </div>
+                </li>
+
+                <li ng-if="currentUser != undefined">
+                    <div class="inset">
+                        <img ng-src="https://graph.facebook.com/{{currentUser.login}}/picture?type=large&redirect=true&width=650&height=650"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

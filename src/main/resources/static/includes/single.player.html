@@ -1,0 +1,39 @@
+<div ng-app="app" ng-controller="SinglePlayerController as vm">
+    <div id="container" class="text-center">
+        <div id="countdown" class="center-block"></div>
+    </div>
+    <div ng-repeat="question in vm.question">
+        <div class="row">
+            <div class="row">
+                <div class="jumbotron text-center">
+                    <h2>
+                        {{question.question}}
+
+                        <img ng-if="question.question === 'Who painted the following picture?'" src="app/misc/tiganca.jpg" height="250">
+                        <img ng-if="question.question === 'The Sistine Chapel was painted by...'" src="app/misc/manuta.jpg">
+                        <img ng-if="question.question === 'The following picture is part of a series by...'" src="app/misc/flore.jpg">
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+
+                    <div><p><a class="btn btn-default btn-block btn-lg" ng-click="vm.validateQuestion(question.answer)">
+                        {{question.answer}}
+                    </a></p></div>
+
+                    <div><p><a class="btn btn-default btn-block btn-lg" ng-click="vm.validateQuestion(question.wrong1)">
+                        {{question.wrong1}}
+                    </a></p></div>
+
+                    <div><p><a class="btn btn-default btn-block btn-lg" ng-click="vm.validateQuestion(question.wrong2)">
+                        {{question.wrong2}}
+                    </a></p></div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cerebro</title>
+    <link rel="stylesheet" href="app/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="app/css/style.css" />
+    <link rel="stylesheet" href="app/lib/sweetalert2.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
+    <script type="text/javascript" src="app/lib/sweetalert2.min.js" ></script>
+    <script type="text/javascript" src="app/lib/angular.min.js" ></script>
+    <script type="text/javascript" src="app/js/app.module.js" ></script>
+    <script type="text/javascript" src="app/js/navigation.service.js" ></script>
+    <script type="text/javascript" src="app/js/user.service.js" ></script>
+    <script type="text/javascript" src="app/js/topic.controller.js" ></script>
+    <script type="text/javascript" src="app/js/single.player.controller.js" ></script>
+    <script type="text/javascript" src="app/js/feedback.controller.js" ></script>
+    <script type="text/javascript" src="app/js/rankings.controller.js" ></script>
+    <script type="text/javascript" src="app/js/login.controller.js" ></script>
+    <script type="text/javascript" src="app/js/navigation.controller.js" ></script>
+    <script type="text/javascript" src="app/js/profile.controller.js" ></script>
+    <script type="text/javascript" src="app/js/multi.controller.js" ></script>
+    <script type="text/javascript" src="app/js/admin.controller.js" ></script>
+    <script type="text/javascript" src="app/js/about.controller.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app/lib/jquery.countdown360.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+</head>
+
+<body ng-app="app" ng-controller="NavigationController as nav">
+<div id="fb-root"></div>
+
+<div ng-include="'includes/header.html'"></div>
+
+<div ng-if="gamePhase === 'RANKINGS'"><div ng-include="'includes/rankings.html'"></div></div>
+
+<div ng-if="gamePhase === 'NONE'"><div ng-include="'includes/login.failed.html'"></div></div>
+<div ng-if="gamePhase === 'LOGGED'"><div ng-include="'includes/main.html'"></div></div>
+
+<div ng-if="gamePhase === 'TOPIC_SELECTION'"><div ng-include="'includes/topics.html'"></div></div>
+
+<div ng-if="gamePhase === 'SINGLE'"><div ng-include="'includes/single.player.html'"></div></div>
+
+<div ng-if="gamePhase === 'FEEDBACK'"><div ng-include="'includes/feedback.html'"></div></div>
+
+<div ng-if="gamePhase === 'NONE' || gamePhase === 'LOGGED'" ng-include="'includes/footer.html'"></div>
+
+<div ng-if="gamePhase === 'PROFILE'"><div ng-include="'includes/profile.html'"></div></div>
+<div ng-if="gamePhase === 'MULTI'" ng-include="'includes/multi.html'"></div>
+
+<div ng-if="gamePhase === 'MULTIEND'" ng-include="'includes/multi.end.html'"></div>
+
+<div ng-if="gamePhase === 'ADMIN'" ng-include="'includes/admin.html'"></div>
+
+<div ng-if="gamePhase === 'ABOUT'" ng-include="'includes/about.html'"></div>
+
+</body>
+</html>

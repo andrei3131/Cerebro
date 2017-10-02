@@ -1,0 +1,42 @@
+variables:
+  IMAGE_NAME: cerebroapp
+  HEROKU_KEY: 19005357-bd65-4ee0-99fb-359f62d8b4ba
+
+stages:
+  - build
+  - test
+  - package
+  - deploy
+
+image: docker:latest
+image: maven:3.3.9-jdk-8
+
+build:
+  stage: build
+  script:
+    - mvn compile
+  artifacts:
+    untracked: true
+
+test:
+  stage: test
+  script:
+    - mvn test
+
+package:
+  stage: package
+  script:
+    - mvn package
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - apt-get install -y rubygems
+    - gem install dpl
+    - dpl --provider=heroku --app=$IMAGE_NAME --api-key=$HEROKU_KEY
+  only:
+    - master
+  environment: staging
+
